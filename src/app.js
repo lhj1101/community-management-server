@@ -6,8 +6,8 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-const index = require('./routes/index')
-const users = require('./routes/users')
+const loginAPIRouter = require('./routes/back-api/login')
+const userAPIRouter = require('./routes/api/user')
 
 // error handler
 onerror(app)
@@ -33,8 +33,8 @@ app.use(views(__dirname + '/views', {
 // })
 
 // routes
-app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+app.use(loginAPIRouter.routes(), loginAPIRouter.allowedMethods())
+app.use(userAPIRouter.routes(), userAPIRouter.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
