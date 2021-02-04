@@ -1,6 +1,6 @@
-const { loginUser } = require('../../services/back/login')
+const { loginAdmin } = require('../../services/admin/login')
 const { SuccessModel, ErrorModel } = require('../../model/resModel')
-const { loginFail } = require('../../model/errorInfo')
+const { adminLoginFail } = require('../../model/errorInfo')
 
 /**
  * 登录
@@ -9,11 +9,11 @@ const { loginFail } = require('../../model/errorInfo')
  */
 async function login(user, password) {
   // service
-  const result = await loginUser(user, password)
+  const result = await loginAdmin(user, password)
   if (result) {
     return new SuccessModel(result)
   }
-  return new ErrorModel(loginFail)
+  return new ErrorModel(adminLoginFail)
 }
 
 module.exports = {

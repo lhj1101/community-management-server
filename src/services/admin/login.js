@@ -1,9 +1,8 @@
 const { exec } = require('../../db/mysql')
 
-const loginUser = (user, password) => {
-  let sql = `select * from user_account where acc_user = '${user}'
-  and acc_password = '${password}'
-  order by id desc;`
+const loginAdmin = (user, password) => {
+  let sql = `select * from admin_account where admin_user = '${user}'
+  and admin_password = '${password}';`
   // 返回promise  
   // console.log(exec(sql))
   return exec(sql).then(updateData => {
@@ -17,5 +16,5 @@ const loginUser = (user, password) => {
 }
 
 module.exports = {
-  loginUser
+  loginAdmin
 }

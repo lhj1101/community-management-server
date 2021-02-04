@@ -6,7 +6,9 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-const loginAPIRouter = require('./routes/back-api/login')
+const adminLoginAPI = require('./routes/admin-api/login')
+const adminActivityAPI = require('./routes/admin-api/activity')
+
 const userAPIRouter = require('./routes/api/user')
 
 // error handler
@@ -33,7 +35,9 @@ app.use(views(__dirname + '/views', {
 // })
 
 // routes
-app.use(loginAPIRouter.routes(), loginAPIRouter.allowedMethods())
+app.use(adminLoginAPI.routes(), adminLoginAPI.allowedMethods())
+app.use(adminActivityAPI.routes(), adminActivityAPI.allowedMethods())
+
 app.use(userAPIRouter.routes(), userAPIRouter.allowedMethods())
 
 // error-handling
