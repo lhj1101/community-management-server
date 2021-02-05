@@ -1,32 +1,32 @@
 const { exec } = require('../../db/mysql')
 
-/**
- * 管理员 活动 查询所有
- */
-const adminSearchAllActivity = () => {
-  let sql = `select
-  admin_activity.id,
-  activity_title,
-  activity_desc,
-  activity_content,
-  activity_place,
-  activity_date,
-  activity_adminId,
-  admin_name
-  from admin_activity
-  left join admin_account
-  on admin_activity.activity_adminId = admin_account.id;`
-  // 返回promise  
-  console.log(sql)
-  return exec(sql).then(updateData => {
-    // console.log('updateDate is', updateData)
-    console.log(updateData)
-    if(updateData[0]){
-      return updateData
-    }
-    return false
-  })
-}
+// /**
+//  * 管理员 活动 查询所有
+//  */
+// const adminSearchAllActivity = () => {
+//   let sql = `select
+//   admin_activity.id,
+//   activity_title,
+//   activity_desc,
+//   activity_content,
+//   activity_place,
+//   activity_date,
+//   activity_adminId,
+//   admin_name
+//   from admin_activity
+//   left join admin_account
+//   on admin_activity.activity_adminId = admin_account.id;`
+//   // 返回promise  
+//   console.log(sql)
+//   return exec(sql).then(updateData => {
+//     // console.log('updateDate is', updateData)
+//     console.log(updateData)
+//     if(updateData[0]){
+//       return updateData
+//     }
+//     return false
+//   })
+// }
 
 /**
  * 管理员 活动 模糊查询
@@ -38,7 +38,7 @@ const adminSearchAllActivity = () => {
  * @param {*} date 活动时间
  * @param {*} adminId 发布者-管理员id
  */
-const adminSearchActivity = ({ id, title, desc, content, place, date, adminId }) => {
+const adminSearchActivity = ({ id, title, desc, content, place, date, adminId, adminName }) => {
   let sql = `select
   admin_activity.id,
   activity_title,
@@ -69,6 +69,12 @@ const adminSearchActivity = ({ id, title, desc, content, place, date, adminId })
   }
   if(date){
     sql += ` and activity_date like '%${date}%'`
+  }
+  if(adminId){
+    sql += ` and activity_adminId like '%${adminId}%'`
+  }
+  if(adminName){
+    sql += ` and admin_name like '%${adminName}%'`
   }
   sql += `;`;
   // 返回promise  
@@ -188,7 +194,7 @@ const adminUpdateActivity = ({ id, title, desc, content, place, date, adminId })
 }
 
 module.exports = {
-  adminSearchAllActivity,
+  // adminSearchAllActivity,
   adminSearchActivity,
   adminAddActivity,
   adminDelActivity,

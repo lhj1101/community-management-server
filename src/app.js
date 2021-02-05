@@ -6,8 +6,9 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-const adminLoginAPI = require('./routes/admin-api/login')
+const adminAccountAPI = require('./routes/admin-api/account')
 const adminActivityAPI = require('./routes/admin-api/activity')
+const adminNoticeAPI = require('./routes/admin-api/notice')
 
 // error handler
 onerror(app)
@@ -33,8 +34,9 @@ app.use(views(__dirname + '/views', {
 // })
 
 // routes
-app.use(adminLoginAPI.routes(), adminLoginAPI.allowedMethods())
+app.use(adminAccountAPI.routes(), adminAccountAPI.allowedMethods())
 app.use(adminActivityAPI.routes(), adminActivityAPI.allowedMethods())
+app.use(adminNoticeAPI.routes(), adminNoticeAPI.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

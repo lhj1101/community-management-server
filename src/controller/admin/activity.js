@@ -19,16 +19,16 @@ const {
   adminSearchActivitySuccess
 } = require('../../model/successInfo')
 
-/**
- * 管理员 活动 查询所有
- */
-async function searchAllActivity() {
-  const result = await adminSearchAllActivity()
-  if (result) {
-    return new SuccessModel(result, adminSearchActivitySuccess)
-  }
-  return new ErrorModel(adminSearchActivityFail)
-}
+// /**
+//  * 管理员 活动 查询所有
+//  */
+// async function searchAllActivity() {
+//   const result = await adminSearchAllActivity()
+//   if (result) {
+//     return new SuccessModel(result, adminSearchActivitySuccess)
+//   }
+//   return new ErrorModel(adminSearchActivityFail)
+// }
 
 /**
  * 管理员 活动 模糊查询, 不传数据即 all查询
@@ -40,9 +40,9 @@ async function searchAllActivity() {
  * @param {*} date 活动时间
  * @param {*} adminId 发布者-管理员id
  */
-async function searchActivity({ id, title, desc, content, place, date, adminId }) {
+async function searchActivity({ id, title, desc, content, place, date, adminId, adminName }) {
   // service
-  const result = await adminSearchActivity({ id, title, desc, content, place, date, adminId })
+  const result = await adminSearchActivity({ id, title, desc, content, place, date, adminId, adminName })
   if (result) {
     return new SuccessModel(result, adminSearchActivitySuccess)
   }
@@ -99,7 +99,7 @@ async function updateActivity({ id, title, desc, content, place, date, adminId }
 
 
 module.exports = {
-  searchAllActivity,
+  // searchAllActivity,
   searchActivity,
   addActivity,
   delActivity,
