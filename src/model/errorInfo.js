@@ -5,7 +5,7 @@
 module.exports = {
   adminLoginFail: {
     errno: 10001,
-    message: '登录失败，账号或密码错误'
+    message: '管理员登录失败，账号或密码错误'
   },
   adminAddActivityFail: {
     errno: 10002,
