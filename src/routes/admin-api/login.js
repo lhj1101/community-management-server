@@ -1,5 +1,5 @@
 /**
- * @description admin login api
+ * @description 管理员 login api
  */
 
 const router = require('koa-router')()
