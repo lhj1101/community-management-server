@@ -6,10 +6,9 @@ const { exec } = require('../../db/mysql')
  * @param {string} password 密码
  */
 const adminLogin = (account, password) => {
-  let sql = `select * from admin_account where admin_user = '${account}'
-  and admin_password = '${password}';`
+  let sql = `select * from admin_account where admin_user = '${account}' and admin_password = '${password}';`
   // 返回promise  
-  // console.log(exec(sql))
+  console.log(sql)
   return exec(sql).then(updateData => {
     // console.log('updateDate is', updateData)
     console.log(updateData)
