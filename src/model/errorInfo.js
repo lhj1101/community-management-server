@@ -6,56 +6,73 @@ module.exports = {
   // admin account
   adminLoginFail: {
     errno: 11001,
-    message: '管理员登录失败，账号或密码错误'
+    message: '管理员，登录失败'
   },
   adminAddAccountFail: {
     errno: 11002,
-    message: '管理员列表，添加失败'
+    message: '管理员，添加失败'
   },
   adminDelAccountFail: {
     errno: 11003,
-    message: '管理员列表，删除失败'
+    message: '管理员，删除失败'
   },
   adminUpdateAccountFail: {
     errno: 11004,
-    message: '管理员列表，更新失败'
+    message: '管理员，更新失败'
   },
   adminSearchAccountFail: {
     errno: 11005,
-    message: '管理员列表，查询失败'
+    message: '管理员，查询失败'
   },
   // admin activity
   adminAddActivityFail: {
     errno: 12001,
-    message: '活动添加失败，请确定添加信息完整'
+    message: '活动，添加失败'
   },
   adminDelActivityFail: {
     errno: 12002,
-    message: '活动删除失败，请确定删除信息id'
+    message: '活动，删除失败'
   },
   adminUpdateActivityFail: {
     errno: 12003,
-    message: '活动更新失败，请确定修改信息是否完整准确'
+    message: '活动，更新失败'
   },
   adminSearchActivityFail: {
     errno: 12004,
-    message: '活动查询失败，请确查询信息是否完整准确'
+    message: '活动，查询失败'
   },
   // admin notice
   adminAddNoticeFail: {
     errno: 13001,
-    message: '公告添加失败，请确定添加信息完整'
+    message: '通知公告，添加失败'
   },
   adminDelNoticeFail: {
     errno: 13002,
-    message: '公告删除失败，请确定删除信息id'
+    message: '通知公告，删除失败'
   },
   adminUpdateNoticeFail: {
     errno: 13003,
-    message: '公告更新失败，请确定修改信息是否完整准确'
+    message: '通知公告，更新失败'
   },
   adminSearchNoticeFail: {
     errno: 13004,
-    message: '公告查询失败，请确查询信息是否完整准确'
-  }
+    message: '通知公告，查询失败'
+  },
+  // house holder
+  holderAddFail: {
+    errno: 11001,
+    message: '住户，添加失败'
+  },
+  holderDelFail: {
+    errno: 11002,
+    message: '住户，删除失败'
+  },
+  holderUpdateFail: {
+    errno: 11003,
+    message: '住户，更新失败'
+  },
+  holderSearchFail: {
+    errno: 11004,
+    message: '住户，查询失败'
+  },
 }

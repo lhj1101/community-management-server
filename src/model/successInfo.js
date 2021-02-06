@@ -19,4 +19,9 @@ module.exports = {
   adminDelNoticeSuccess: '公告通知，删除成功',
   adminUpdateNoticeSuccess: '公告通知，修改成功',
   adminSearchNoticeSuccess: '公告通知，查询成功',
+  // house holder
+  holderAddFail: '住户，添加成功',
+  holderDelFail: '住户，删除成功',
+  holderUpdateFail: '住户，更新成功',
+  holderSearchFail: '住户，查询成功',
 }

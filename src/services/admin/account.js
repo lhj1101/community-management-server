@@ -27,7 +27,7 @@ const adminLogin = (account, password) => {
  * @param {*} password 管理员密码
  * @param {*} adminName 管理员名
  */
-const adminAddAdminaccount = ({ account, password, adminName }) => {
+const adminAddAdminAccount = ({ account, password, adminName }) => {
   // console.log(!account || !password || !adminName)
   if(!account || !password || !adminName){
     return false
@@ -61,7 +61,7 @@ const adminAddAdminaccount = ({ account, password, adminName }) => {
  * 管理员账号 根据id删除
  * @param {*} id 管理员账号id
  */
-const adminDelAdminaccount = (id) => {
+const adminDelAdminAccount = (id) => {
   let sql = `delete
   from admin_account
   where
@@ -85,7 +85,7 @@ const adminDelAdminaccount = (id) => {
  * @param {*} password 管理员密码
  * @param {*} adminName 管理员名
  */
-const adminUpdateAdminaccount = ({ id, account, password, adminName }) => {
+const adminUpdateAdminAccount = ({ id, account, password, adminName }) => {
   if(!id || !account || !password || !adminName){
     return false
   }
@@ -116,7 +116,7 @@ const adminUpdateAdminaccount = ({ id, account, password, adminName }) => {
  * @param {*} account 管理员账号
  * @param {*} adminName 管理员名
  */
-const adminSearchAdminaccount = ({ id, account, adminName }) => {
+const adminSearchAdminAccount = ({ id, account, adminName }) => {
   let sql = `select
   admin_account.id,
   admin_user,
@@ -148,8 +148,8 @@ const adminSearchAdminaccount = ({ id, account, adminName }) => {
 
 module.exports = {
   adminLogin,
-  adminAddAdminaccount,
-  adminDelAdminaccount,
-  adminUpdateAdminaccount,
-  adminSearchAdminaccount
+  adminAddAdminAccount,
+  adminDelAdminAccount,
+  adminUpdateAdminAccount,
+  adminSearchAdminAccount
 }

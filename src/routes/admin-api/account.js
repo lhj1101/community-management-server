@@ -5,10 +5,10 @@
 const router = require('koa-router')()
 const {
   login,
-  addAdminaccount,
-  delAdminaccount,
-  updateAdminaccount,
-  searchAdminaccount
+  addAdminAccount,
+  delAdminAccount,
+  updateAdminAccount,
+  searchAdminAccount
 } = require('../../controller/admin/account')
 
 router.prefix('/api/admin')
@@ -21,31 +21,31 @@ router.post('/login', async (ctx, next) => {
 })
 
 // 管理员账号 增
-router.post('/addAdminaccount', async (ctx, next) => {
+router.post('/addAdminAccount', async (ctx, next) => {
   const { account, password, adminName } = ctx.request.body
   // controller
-  ctx.body = await addAdminaccount({ account, password, adminName })
+  ctx.body = await addAdminAccount({ account, password, adminName })
 })
 
 // 管理员账号 删
-router.post('/delAdminaccount', async (ctx, next) => {
+router.post('/delAdminAccount', async (ctx, next) => {
   const { id } = ctx.request.body
   // controller
-  ctx.body = await delAdminaccount(id)
+  ctx.body = await delAdminAccount(id)
 })
 
 // 管理员账号 改
-router.post('/updateAdminaccount', async (ctx, next) => {
+router.post('/updateAdminAccount', async (ctx, next) => {
   const { id, account, password, adminName } = ctx.request.body
   // controller
-  ctx.body = await updateAdminaccount({ id, account, password, adminName })
+  ctx.body = await updateAdminAccount({ id, account, password, adminName })
 })
 
 // 管理员账号 模糊查询, 不传数据即 all查询
-router.post('/searchAdminaccount', async (ctx, next) => {
+router.post('/searchAdminAccount', async (ctx, next) => {
   const { id, account, adminName } = ctx.request.body
   // controller
-  ctx.body = await searchAdminaccount({ id, account, adminName })
+  ctx.body = await searchAdminAccount({ id, account, adminName })
 })
 
 module.exports = router

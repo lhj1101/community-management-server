@@ -1,9 +1,9 @@
 const {
   adminLogin,
-  adminAddAdminaccount,
-  adminDelAdminaccount,
-  adminUpdateAdminaccount,
-  adminSearchAdminaccount
+  adminAddAdminAccount,
+  adminDelAdminAccount,
+  adminUpdateAdminAccount,
+  adminSearchAdminAccount
 } = require('../../services/admin/account')
 const { SuccessModel, ErrorModel } = require('../../model/resModel')
 const {
@@ -41,9 +41,9 @@ async function login(account, password) {
  * @param {*} password 管理员密码
  * @param {*} adminName 管理员名
  */
-async function addAdminaccount({ account, password, adminName }) {
+async function addAdminAccount({ account, password, adminName }) {
   // service
-  const result = await adminAddAdminaccount({ account, password, adminName })
+  const result = await adminAddAdminAccount({ account, password, adminName })
   if (result) {
     return new SuccessModel({ account, password, adminName }, adminAddAccountSuccess)
   }
@@ -54,8 +54,8 @@ async function addAdminaccount({ account, password, adminName }) {
  * 管理员账号 根据id删除
  * @param {*} id 管理员账号id
  */
-async function delAdminaccount(id){
-  const result = await adminDelAdminaccount(id)
+async function delAdminAccount(id){
+  const result = await adminDelAdminAccount(id)
   if (result) {
     return new SuccessModel({id}, adminDelAccountSuccess)
   }
@@ -69,8 +69,8 @@ async function delAdminaccount(id){
  * @param {*} password 管理员密码
  * @param {*} adminName 管理员名
  */
-async function updateAdminaccount({ id, account, password, adminName }){
-  const result = await adminUpdateAdminaccount({ id, account, password, adminName })
+async function updateAdminAccount({ id, account, password, adminName }){
+  const result = await adminUpdateAdminAccount({ id, account, password, adminName })
   if (result) {
     return new SuccessModel({ id, account, password, adminName }, adminUpdateAccountSuccess)
   }
@@ -83,9 +83,9 @@ async function updateAdminaccount({ id, account, password, adminName }){
  * @param {*} account 管理员账号
  * @param {*} adminName 管理员名
  */
-async function searchAdminaccount({ id, account, adminName }) {
+async function searchAdminAccount({ id, account, adminName }) {
   // service
-  const result = await adminSearchAdminaccount({ id, account, adminName })
+  const result = await adminSearchAdminAccount({ id, account, adminName })
   if (result) {
     return new SuccessModel(result, adminSearchAccountSuccess)
   }
@@ -94,8 +94,8 @@ async function searchAdminaccount({ id, account, adminName }) {
 
 module.exports = {
   login,
-  addAdminaccount,
-  delAdminaccount,
-  updateAdminaccount,
-  searchAdminaccount
+  addAdminAccount,
+  delAdminAccount,
+  updateAdminAccount,
+  searchAdminAccount
 }

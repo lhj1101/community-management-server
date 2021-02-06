@@ -9,6 +9,7 @@ const logger = require('koa-logger')
 const adminAccountAPI = require('./routes/admin-api/account')
 const adminActivityAPI = require('./routes/admin-api/activity')
 const adminNoticeAPI = require('./routes/admin-api/notice')
+const houseHolderAPI = require('./routes/house-holder-api/holder')
 
 // error handler
 onerror(app)
@@ -37,6 +38,7 @@ app.use(views(__dirname + '/views', {
 app.use(adminAccountAPI.routes(), adminAccountAPI.allowedMethods())
 app.use(adminActivityAPI.routes(), adminActivityAPI.allowedMethods())
 app.use(adminNoticeAPI.routes(), adminNoticeAPI.allowedMethods())
+app.use(houseHolderAPI.routes(), houseHolderAPI.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
