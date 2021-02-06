@@ -48,13 +48,13 @@ async function delNotice(id){
 }
 
 /**
- * 管理员 公告通知 根据id修改
- * @param {*} id 
- * @param {*} title 
- * @param {*} desc 
- * @param {*} content 
- * @param {*} date 
- * @param {*} adminId 
+ * 管理员 公告通知 更新修改 根据id修改，所有必填
+ * @param {*} id 活动id
+ * @param {*} title 活动标题
+ * @param {*} desc 活动描述
+ * @param {*} content 活动内容
+ * @param {*} date 活动时间
+ * @param {*} adminId 发布者-管理员id
  */
 async function updateNotice({ id, title, desc, content, date, adminId }){
   const result = await adminUpdateNotice({ id, title, desc, content, date, adminId })

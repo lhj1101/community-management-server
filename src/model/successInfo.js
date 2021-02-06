@@ -4,16 +4,19 @@
 
 module.exports = {
   // admin account
-  adminLoginSuccess: '管理员登录成功',
-  adminGetAccountListSuccess: '获取管理员列表成功',
+  adminLoginSuccess: '管理员，登录成功',
+  adminAddAccountSuccess: '管理员，添加成功',
+  adminDelAccountSuccess: '管理员，删除成功',
+  adminUpdateAccountSuccess: '管理员，修改成功',
+  adminSearchAccountSuccess: '管理员，查询成功',
   // admin activity
-  adminAddActivitySuccess: '小区活动添加成功',
-  adminDelActivitySuccess: '小区活动删除成功',
-  adminUpdateActivitySuccess: '小区活动修改成功',
-  adminSearchActivitySuccess: '小区活动查询成功',
+  adminAddActivitySuccess: '小区活动，添加成功',
+  adminDelActivitySuccess: '小区活动，删除成功',
+  adminUpdateActivitySuccess: '小区活动，修改成功',
+  adminSearchActivitySuccess: '小区活动，查询成功',
   // admin notice
-  adminAddNoticeSuccess: '公告通知添加成功',
-  adminDelNoticeSuccess: '公告通知删除成功',
-  adminUpdateNoticeSuccess: '公告通知修改成功',
-  adminSearchNoticeSuccess: '公告通知查询成功',
+  adminAddNoticeSuccess: '公告通知，添加成功',
+  adminDelNoticeSuccess: '公告通知，删除成功',
+  adminUpdateNoticeSuccess: '公告通知，修改成功',
+  adminSearchNoticeSuccess: '公告通知，查询成功',
 }

@@ -1,9 +1,8 @@
 const {
-  adminSearchAllActivity,
-  adminSearchActivity,
   adminAddActivity,
   adminDelActivity,
-  adminUpdateActivity
+  adminUpdateActivity,
+  adminSearchActivity
 } = require('../../services/admin/activity')
 const { SuccessModel, ErrorModel } = require('../../model/resModel')
 const {
@@ -18,36 +17,6 @@ const {
   adminUpdateActivitySuccess,
   adminSearchActivitySuccess
 } = require('../../model/successInfo')
-
-// /**
-//  * 管理员 活动 查询所有
-//  */
-// async function searchAllActivity() {
-//   const result = await adminSearchAllActivity()
-//   if (result) {
-//     return new SuccessModel(result, adminSearchActivitySuccess)
-//   }
-//   return new ErrorModel(adminSearchActivityFail)
-// }
-
-/**
- * 管理员 活动 模糊查询, 不传数据即 all查询
- * @param {*} id 活动id
- * @param {*} title 活动标题
- * @param {*} desc 活动描述
- * @param {*} content 活动内容
- * @param {*} place 活动地点
- * @param {*} date 活动时间
- * @param {*} adminId 发布者-管理员id
- */
-async function searchActivity({ id, title, desc, content, place, date, adminId, adminName }) {
-  // service
-  const result = await adminSearchActivity({ id, title, desc, content, place, date, adminId, adminName })
-  if (result) {
-    return new SuccessModel(result, adminSearchActivitySuccess)
-  }
-  return new ErrorModel(adminSearchActivityFail)
-}
 
 /**
  * 管理员 活动 增加
@@ -80,14 +49,14 @@ async function delActivity(id){
 }
 
 /**
- * 管理员 活动 根据id修改
- * @param {*} id 
- * @param {*} title 
- * @param {*} desc 
- * @param {*} content 
- * @param {*} place 
- * @param {*} date 
- * @param {*} adminId 
+ * 管理员 活动 更新修改，所有必填
+ * @param {*} id 活动id
+ * @param {*} title 活动标题
+ * @param {*} desc 活动描述
+ * @param {*} content 活动内容
+ * @param {*} place 活动地点
+ * @param {*} date 活动时间
+ * @param {*} adminId 发布者-管理员id
  */
 async function updateActivity({ id, title, desc, content, place, date, adminId }){
   const result = await adminUpdateActivity({ id, title, desc, content, place, date, adminId })
@@ -97,11 +66,28 @@ async function updateActivity({ id, title, desc, content, place, date, adminId }
   return new ErrorModel(adminUpdateActivityFail)
 }
 
+/**
+ * 管理员 活动 模糊查询, 不传数据即 all查询
+ * @param {*} id 活动id
+ * @param {*} title 活动标题
+ * @param {*} desc 活动描述
+ * @param {*} content 活动内容
+ * @param {*} place 活动地点
+ * @param {*} date 活动时间
+ * @param {*} adminId 发布者-管理员id
+ */
+async function searchActivity({ id, title, desc, content, place, date, adminId, adminName }) {
+  // service
+  const result = await adminSearchActivity({ id, title, desc, content, place, date, adminId, adminName })
+  if (result) {
+    return new SuccessModel(result, adminSearchActivitySuccess)
+  }
+  return new ErrorModel(adminSearchActivityFail)
+}
 
 module.exports = {
-  // searchAllActivity,
-  searchActivity,
   addActivity,
   delActivity,
-  updateActivity
+  updateActivity,
+  searchActivity
 }
