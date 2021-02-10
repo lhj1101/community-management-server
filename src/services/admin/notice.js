@@ -1,11 +1,11 @@
 const { exec } = require('../../db/mysql')
 
 /**
- * 管理员 活动 增加
- * @param {*} title 活动标题
- * @param {*} desc 活动描述
- * @param {*} content 活动内容
- * @param {*} date 活动时间
+ * 管理员 公告通知 增加
+ * @param {*} title 公告通知标题
+ * @param {*} desc 公告通知描述
+ * @param {*} content 公告通知内容
+ * @param {*} date 公告通知时间
  * @param {*} adminId 发布者-管理员id
  */
 const adminAddNotice = ({ title, desc, content, date, adminId }) => {
@@ -65,11 +65,11 @@ const adminDelNotice = (id) => {
 
 /**
  * 管理员 公告通知 更新修改 根据id修改，所有必填
- * @param {*} id 活动id
- * @param {*} title 活动标题
- * @param {*} desc 活动描述
- * @param {*} content 活动内容
- * @param {*} date 活动时间
+ * @param {*} id 公告通知id
+ * @param {*} title 公告通知标题
+ * @param {*} desc 公告通知描述
+ * @param {*} content 公告通知内容
+ * @param {*} date 公告通知时间
  * @param {*} adminId 发布者-管理员id
  */
 const adminUpdateNotice = ({ id, title, desc, content, date, adminId }) => {
@@ -100,13 +100,12 @@ const adminUpdateNotice = ({ id, title, desc, content, date, adminId }) => {
 }
 
 /**
- * 管理员 活动 模糊查询
- * @param {*} id 活动id
- * @param {*} title 活动标题
- * @param {*} desc 活动描述
- * @param {*} content 活动内容
- * @param {*} place 活动地点
- * @param {*} date 活动时间
+ * 管理员 公告通知 模糊查询, 不传数据即 all查询
+ * @param {*} id 公告通知id
+ * @param {*} title 公告通知标题
+ * @param {*} desc 公告通知描述
+ * @param {*} content 公告通知内容
+ * @param {*} date 公告通知时间
  * @param {*} adminId 发布者-管理员id
  */
 const adminSearchNotice = ({ id, title, desc, content, date, adminId, adminName }) => {
