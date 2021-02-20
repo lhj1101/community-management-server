@@ -108,7 +108,7 @@ const adminUpdateNotice = ({ id, title, desc, content, date, adminId }) => {
  * @param {*} date 公告通知时间
  * @param {*} adminId 发布者-管理员id
  */
-const adminSearchNotice = ({ id, title, desc, content, date, adminId, adminName }) => {
+const adminSearchNotice = ({ limitF, limitS, id, title, desc, content, date, adminId, adminName }) => {
   let sql = `select
   admin_notice.id,
   notice_title,
@@ -142,7 +142,11 @@ const adminSearchNotice = ({ id, title, desc, content, date, adminId, adminName 
   if(adminName){
     sql += ` and admin_name like '%${adminName}%'`
   }
-  sql += `;`;
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
+  }
+  sql += `;`
+  // sql += ` order by id desc limit ${limitF}, ${limitS};`
   // 返回promise  
   console.log(sql)
   return exec(sql).then(updateData => {

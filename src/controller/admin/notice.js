@@ -73,9 +73,9 @@ async function updateNotice({ id, title, desc, content, date, adminId }){
  * @param {*} date 公告通知时间
  * @param {*} adminId 发布者-管理员id
  */
-async function searchNotice({ id, title, desc, content, date, adminId, adminName }) {
+async function searchNotice({ limitF, limitS, id, title, desc, content, date, adminId, adminName }) {
   // service
-  const result = await adminSearchNotice({ id, title, desc, content, date, adminId, adminName })
+  const result = await adminSearchNotice({ limitF, limitS, id, title, desc, content, date, adminId, adminName })
   if (result) {
     return new SuccessModel(result, adminSearchNoticeSuccess)
   }

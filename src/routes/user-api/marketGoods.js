@@ -35,9 +35,9 @@ router.post('/updateUserMarketGoods', async (ctx, next) => {
 
 // 用户二手商品 模糊查询, 不传数据即 all查询
 router.post('/searchUserMarketGoods', async (ctx, next) => {
-  const { id, type, title, desc, number, price, picture, done, userId } = ctx.request.body
+  const { limitF, limitS, id, type, title, desc, number, price, picture, done, userId } = ctx.request.body
   // controller
-  ctx.body = await searchUserMarketGoods({ id, type, title, desc, number, price, picture, done, userId })
+  ctx.body = await searchUserMarketGoods({ limitF, limitS, id, type, title, desc, number, price, picture, done, userId })
 })
 
 module.exports = router

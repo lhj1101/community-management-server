@@ -35,9 +35,9 @@ router.post('/updateUserActivity', async (ctx, next) => {
 
 // 用户账号 模糊查询, 不传数据即 all查询
 router.post('/searchUserActivity', async (ctx, next) => {
-  const { id, title, content, place, date, userId } = ctx.request.body
+  const { limitF, limitS, id, title, content, place, date, userId } = ctx.request.body
   // controller
-  ctx.body = await searchUserActivity({ id, title, content, place, date, userId })
+  ctx.body = await searchUserActivity({ limitF, limitS, id, title, content, place, date, userId })
 })
 
 module.exports = router

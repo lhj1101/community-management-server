@@ -35,9 +35,9 @@ router.post('/updateNotice', async (ctx, next) => {
 
 // 公告通知 模糊查询, 不传数据即 all查询
 router.post('/searchNotice', async (ctx, next) => {
-  const { id, title, desc, content, date, adminId, adminName } = ctx.request.body
+  const { limitF, limitS, id, title, desc, content, date, adminId, adminName } = ctx.request.body
   // controller
-  ctx.body = await searchNotice({ id, title, desc, content, date, adminId, adminName })
+  ctx.body = await searchNotice({ limitF, limitS, id, title, desc, content, date, adminId, adminName })
 })
 
 

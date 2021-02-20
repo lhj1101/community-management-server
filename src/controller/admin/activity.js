@@ -76,9 +76,9 @@ async function updateActivity({ id, title, desc, content, place, date, adminId }
  * @param {*} date 活动时间
  * @param {*} adminId 发布者-管理员id
  */
-async function searchActivity({ id, title, desc, content, place, date, adminId, adminName }) {
+async function searchActivity({ limitF, limitS, id, title, desc, content, place, date, adminId, adminName }) {
   // service
-  const result = await adminSearchActivity({ id, title, desc, content, place, date, adminId, adminName })
+  const result = await adminSearchActivity({ limitF, limitS, id, title, desc, content, place, date, adminId, adminName })
   if (result) {
     return new SuccessModel(result, adminSearchActivitySuccess)
   }

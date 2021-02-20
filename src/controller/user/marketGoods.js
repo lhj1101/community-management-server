@@ -82,9 +82,9 @@ async function updateUserMarketGoods({ id, type, title, desc, number, price, pic
  * @param {*} done 是否已经卖出/下架
  * @param {*} userId 二手商品卖家id
  */
-async function searchUserMarketGoods({ id, type, title, desc, number, price, picture, done, userId }) {
+async function searchUserMarketGoods({ limitF, limitS, id, type, title, desc, number, price, picture, done, userId }) {
   // service
-  const result = await userSearchUserMarketGoods({ id, type, title, desc, number, price, picture, done, userId })
+  const result = await userSearchUserMarketGoods({ limitF, limitS, id, type, title, desc, number, price, picture, done, userId })
   if (result) {
     return new SuccessModel(result, userSearchMarketGoodsSuccess)
   }

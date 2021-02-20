@@ -126,7 +126,7 @@ const userUpdateUserMarketGoods = ({ id, type, title, desc, number, price, pictu
  * @param {*} done 是否已经卖出/下架
  * @param {*} userId 二手商品卖家id
  */
-const userSearchUserMarketGoods = ({ id, type, title, desc, number, price, picture, done, userId }) => {
+const userSearchUserMarketGoods = ({ limitF, limitS, id, type, title, desc, number, price, picture, done, userId }) => {
   let sql = `select
   user_market_goods.id,
   goods_type,
@@ -169,6 +169,9 @@ const userSearchUserMarketGoods = ({ id, type, title, desc, number, price, pictu
   }
   if(userId){
     sql += ` and goods_userId like '%${userId}%'`
+  }
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
   }
   sql += `;`;
   // 返回promise  

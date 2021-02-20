@@ -108,7 +108,7 @@ const userUpdateUserActivity = ({ id, title, content, place, date, userId }) => 
  * @param {*} date 活动日期
  * @param {*} userId 活动发起人id
  */
-const userSearchUserActivity = ({ id, title, content, place, date, userId }) => {
+const userSearchUserActivity = ({ limitF, limitS, id, title, content, place, date, userId }) => {
   let sql = `select
   user_activity.id,
   activity_title,
@@ -140,7 +140,10 @@ const userSearchUserActivity = ({ id, title, content, place, date, userId }) => 
   if(userId){
     sql += ` and activity_userId like '%${userId}%'`
   }
-  sql += `;`;
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
+  }
+  sql += `;`
   // 返回promise  
   console.log(sql)
   return exec(sql).then(updateData => {

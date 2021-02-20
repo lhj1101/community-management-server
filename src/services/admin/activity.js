@@ -114,7 +114,7 @@ const adminUpdateActivity = ({ id, title, desc, content, place, date, adminId })
  * @param {*} date 活动时间
  * @param {*} adminId 发布者-管理员id
  */
-const adminSearchActivity = ({ id, title, desc, content, place, date, adminId, adminName }) => {
+const adminSearchActivity = ({ limitF, limitS, id, title, desc, content, place, date, adminId, adminName }) => {
   let sql = `select
   admin_activity.id,
   activity_title,
@@ -152,7 +152,10 @@ const adminSearchActivity = ({ id, title, desc, content, place, date, adminId, a
   if(adminName){
     sql += ` and admin_name like '%${adminName}%'`
   }
-  sql += `;`;
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
+  }
+  sql += `;`
   // 返回promise  
   console.log(sql)
   return exec(sql).then(updateData => {
