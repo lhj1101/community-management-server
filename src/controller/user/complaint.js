@@ -73,9 +73,9 @@ async function updateUserComplaint({ id, direction, desc, done, date, userId }){
  * @param {*} date 活动日期
  * @param {*} userId 活动发起人id
  */
-async function searchUserComplaint({ id, direction, desc, done, date, userId }) {
+async function searchUserComplaint({ limitF, limitS, id, direction, desc, done, date, userId }) {
   // service
-  const result = await userSearchUserComplaint({ id, direction, desc, done, date, userId })
+  const result = await userSearchUserComplaint({ limitF, limitS, id, direction, desc, done, date, userId })
   if (result) {
     return new SuccessModel(result, userSearchComplaintSuccess)
   }

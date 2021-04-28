@@ -10,7 +10,7 @@ const { exec } = require('../../db/mysql')
  * @param {*} done 分享是否已删除
  * @param {*} userId 分享人id
  */
-const userAddUserShare = ({ title, desc, content, picture, date, done, userId }) => {
+const userAddUserShare = ({ title, desc, content, picture, date, done, userId, userPic }) => {
   // console.log(!title || !desc || !content || !picture || !date || !done || !userId)
   if(!title || !desc || !content || !picture || !date || !done || !userId) {
     return false
@@ -22,7 +22,8 @@ const userAddUserShare = ({ title, desc, content, picture, date, done, userId })
     share_picture,
     share_date,
     share_done,
-    share_userId
+    share_userId,
+    share_user_pic
   ) values (
     '${title}',
     '${desc}',
@@ -30,7 +31,8 @@ const userAddUserShare = ({ title, desc, content, picture, date, done, userId })
     '${picture}',
     '${date}',
     '${done}',
-    '${userId}'
+    '${userId}',
+    '${userPic}'
   )`
   // 返回promise  
   console.log(sql)
@@ -119,8 +121,9 @@ const userUpdateUserShare = ({ id, title, desc, content, picture, date, done, us
  * @param {*} date 分享日期
  * @param {*} done 分享是否已删除
  * @param {*} userId 分享人id
+ * @param {*} userPic 分享人头像
  */
-const userSearchUserShare = ({ id, title, desc, content, picture, date, done, userId }) => {
+const userSearchUserShare = ({ limitF, limitS, id, title, desc, content, picture, date, done, userId, userPic }) => {
   let sql = `select
   user_share.id,
   share_title,
@@ -130,6 +133,7 @@ const userSearchUserShare = ({ id, title, desc, content, picture, date, done, us
   share_date,
   share_done,
   share_userId,
+  share_user_pic,
   acc_nickname,
   acc_phone
   from user_share
@@ -159,6 +163,12 @@ const userSearchUserShare = ({ id, title, desc, content, picture, date, done, us
   }
   if(userId){
     sql += ` and share_userId like '%${userId}%'`
+  }
+  if(userPic){
+    sql += ` and share_user_pic like '%${userPic}%'`
+  }
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
   }
   sql += `;`;
   // 返回promise  

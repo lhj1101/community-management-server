@@ -35,9 +35,9 @@ router.post('/updateUserLost', async (ctx, next) => {
 
 // 用户失物报备 模糊查询, 不传数据即 all查询
 router.post('/searchUserLost', async (ctx, next) => {
-  const { id, name, desc, place, date, done, userId } = ctx.request.body
+  const { limitF, limitS, id, name, desc, place, date, done, userId } = ctx.request.body
   // controller
-  ctx.body = await searchUserLost({ id, name, desc, place, date, done, userId })
+  ctx.body = await searchUserLost({ limitF, limitS, id, name, desc, place, date, done, userId })
 })
 
 module.exports = router

@@ -35,9 +35,9 @@ router.post('/updateUserVisitor', async (ctx, next) => {
 
 // 用户访客 模糊查询, 不传数据即 all查询
 router.post('/searchUserVisitor', async (ctx, next) => {
-  const { id, name, sex, phone, stayTime, date, done, userId } = ctx.request.body
+  const { limitF, limitS, id, name, sex, phone, stayTime, date, done, userId } = ctx.request.body
   // controller
-  ctx.body = await searchUserVisitor({ id, name, sex, phone, stayTime, date, done, userId })
+  ctx.body = await searchUserVisitor({ limitF, limitS, id, name, sex, phone, stayTime, date, done, userId })
 })
 
 module.exports = router

@@ -43,9 +43,9 @@ router.post('/updateUserAccount', async (ctx, next) => {
 
 // 用户账号 模糊查询, 不传数据即 all查询
 router.post('/searchUserAccount', async (ctx, next) => {
-  const { id, account, password, realName, nickName, phone, pic, done } = ctx.request.body
+  const { limitF, limitS, id, account, password, realName, nickName, phone, pic, done } = ctx.request.body
   // controller
-  ctx.body = await searchUserAccount({ id, account, password, realName, nickName, phone, pic, done })
+  ctx.body = await searchUserAccount({ limitF, limitS, id, account, password, realName, nickName, phone, pic, done })
 })
 
 module.exports = router

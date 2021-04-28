@@ -43,9 +43,9 @@ router.post('/updateAdminAccount', async (ctx, next) => {
 
 // 管理员账号 模糊查询, 不传数据即 all查询
 router.post('/searchAdminAccount', async (ctx, next) => {
-  const { id, account, adminName } = ctx.request.body
+  const { limitF, limitS, id, account, adminName } = ctx.request.body
   // controller
-  ctx.body = await searchAdminAccount({ id, account, adminName })
+  ctx.body = await searchAdminAccount({ limitF, limitS, id, account, adminName })
 })
 
 module.exports = router

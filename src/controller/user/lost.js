@@ -76,9 +76,9 @@ async function updateUserLost({ id, name, desc, place, date, done, userId }){
  * @param {*} done 失物是否已找回
  * @param {*} userId 失物人id
  */
-async function searchUserLost({ id, name, desc, place, date, done, userId }) {
+async function searchUserLost({ limitF, limitS, id, name, desc, place, date, done, userId }) {
   // service
-  const result = await userSearchUserLost({ id, name, desc, place, date, done, userId })
+  const result = await userSearchUserLost({ limitF, limitS, id, name, desc, place, date, done, userId })
   if (result) {
     return new SuccessModel(result, userSearchLostSuccess)
   }

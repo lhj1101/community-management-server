@@ -73,9 +73,9 @@ async function updateUserRepair({ id, name, extent, place, done, userId }){
  * @param {*} done 是否已经修复完成
  * @param {*} userId 报修人id
  */
-async function searchUserRepair({ id, name, extent, place, done, userId }) {
+async function searchUserRepair({ limitF, limitS, id, name, extent, place, done, userId }) {
   // service
-  const result = await userSearchUserRepair({ id, name, extent, place, done, userId })
+  const result = await userSearchUserRepair({ limitF, limitS, id, name, extent, place, done, userId })
   if (result) {
     return new SuccessModel(result, userSearchRepairSuccess)
   }

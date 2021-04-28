@@ -14,9 +14,9 @@ router.prefix('/api/user')
 
 // 用户分享 增
 router.post('/addUserShare', async (ctx, next) => {
-  const { title, desc, content, picture, date, done, userId } = ctx.request.body
+  const { title, desc, content, picture, date, done, userId, userPic } = ctx.request.body
   // controller
-  ctx.body = await addUserShare({ title, desc, content, picture, date, done, userId })
+  ctx.body = await addUserShare({ title, desc, content, picture, date, done, userId, userPic })
 })
 
 // 用户分享 删
@@ -35,9 +35,9 @@ router.post('/updateUserShare', async (ctx, next) => {
 
 // 用户分享 模糊查询, 不传数据即 all查询
 router.post('/searchUserShare', async (ctx, next) => {
-  const { id, title, desc, content, picture, date, done, userId } = ctx.request.body
+  const { limitF, limitS, id, title, desc, content, picture, date, done, userId, userPic } = ctx.request.body
   // controller
-  ctx.body = await searchUserShare({ id, title, desc, content, picture, date, done, userId })
+  ctx.body = await searchUserShare({ limitF, limitS, id, title, desc, content, picture, date, done, userId, userPic })
 })
 
 module.exports = router

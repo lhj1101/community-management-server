@@ -108,7 +108,7 @@ const userUpdateUserRepair = ({ id, name, extent, place, done, userId }) => {
  * @param {*} done 是否已经修复完成
  * @param {*} userId 报修人id
  */
-const userSearchUserRepair = ({ id, name, extent, place, done, userId }) => {
+const userSearchUserRepair = ({ limitF, limitS, id, name, extent, place, done, userId }) => {
   let sql = `select
   user_repair.id,
   repair_name,
@@ -139,6 +139,9 @@ const userSearchUserRepair = ({ id, name, extent, place, done, userId }) => {
   }
   if(userId){
     sql += ` and repair_userId like '%${userId}%'`
+  }
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
   }
   sql += `;`;
   // 返回promise  

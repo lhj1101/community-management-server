@@ -79,9 +79,9 @@ async function updateHolder({ id, user, sex, phone, communityName, buildingNumbe
  * @param {*} floorNumber 住户楼层
  * @param {*} doorNumber 住户门牌号
  */
-async function searchHolder({ id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber }) {
+async function searchHolder({ limitF, limitS, id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber }) {
   // service
-  const result = await houseSearchHolder({ id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber })
+  const result = await houseSearchHolder({ limitF, limitS, id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber })
   if (result) {
     return new SuccessModel(result, holderSearchSuccess)
   }

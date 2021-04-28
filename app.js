@@ -8,18 +8,19 @@ const logger = require('koa-logger')
 const cors = require('koa2-cors')
 app.use(cors())
 
-const adminAccountAPI = require('./routes/admin-api/account')
-const adminActivityAPI = require('./routes/admin-api/activity')
-const adminNoticeAPI = require('./routes/admin-api/notice')
-const houseHolderAPI = require('./routes/house-holder-api/holder')
-const userAccountAPI = require('./routes/user-api/account')
-const userActivityAPI = require('./routes/user-api/activity')
-const userComplaintAPI = require('./routes/user-api/complaint')
-const userLostAPI = require('./routes/user-api/lost')
-const userMarketGoodstAPI = require('./routes/user-api/marketGoods')
-const userRepairAPI = require('./routes/user-api/repair')
-const userShareAPI = require('./routes/user-api/share')
-const userVisitorAPI = require('./routes/user-api/visitor')
+const adminAccountAPI = require('./src/routes/admin-api/account')
+const adminActivityAPI = require('./src/routes/admin-api/activity')
+const adminNoticeAPI = require('./src/routes/admin-api/notice')
+const houseHolderAPI = require('./src/routes/house-holder-api/holder')
+const userAccountAPI = require('./src/routes/user-api/account')
+const userActivityAPI = require('./src/routes/user-api/activity')
+const userComplaintAPI = require('./src/routes/user-api/complaint')
+const userLostAPI = require('./src/routes/user-api/lost')
+const userMarketGoodstAPI = require('./src/routes/user-api/marketGoods')
+const userRepairAPI = require('./src/routes/user-api/repair')
+const userShareAPI = require('./src/routes/user-api/share')
+const userVisitorAPI = require('./src/routes/user-api/visitor')
+const uploadImg = require('./src/routes/uploadImg/uploadImg')
 
 // error handler
 onerror(app)
@@ -30,7 +31,7 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-app.use(require('koa-static')(__dirname + '/public'))
+app.use(require('koa-static')(__dirname + '/src'))
 
 app.use(views(__dirname + '/views', {
   extension: 'pug'
@@ -57,6 +58,7 @@ app.use(userMarketGoodstAPI.routes(), userMarketGoodstAPI.allowedMethods())
 app.use(userRepairAPI.routes(), userRepairAPI.allowedMethods())
 app.use(userShareAPI.routes(), userShareAPI.allowedMethods())
 app.use(userVisitorAPI.routes(), userVisitorAPI.allowedMethods())
+app.use(uploadImg.routes(), uploadImg.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

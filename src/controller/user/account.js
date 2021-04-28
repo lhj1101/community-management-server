@@ -93,9 +93,9 @@ async function updateUserAccount({ id, account, password, realName, nickName, ph
  * @param {*} phone 用户联系电话
  * @param {*} pic 用户头像
  */
-async function searchUserAccount({ id, account, password, realName, nickName, phone, pic, done }) {
+async function searchUserAccount({ limitF, limitS, id, account, password, realName, nickName, phone, pic, done }) {
   // service
-  const result = await userSearchUserAccount({ id, account, password, realName, nickName, phone, pic, done })
+  const result = await userSearchUserAccount({ limitF, limitS, id, account, password, realName, nickName, phone, pic, done })
   if (result) {
     return new SuccessModel(result, userSearchAccountSuccess)
   }

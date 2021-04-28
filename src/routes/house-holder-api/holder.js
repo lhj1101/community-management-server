@@ -36,9 +36,9 @@ router.post('/updateHolder', async (ctx, next) => {
 
 // 住户 模糊查询, 不传数据即 all查询
 router.post('/searchHolder', async (ctx, next) => {
-  const { id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber } = ctx.request.body
+  const { limitF, limitS, id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber } = ctx.request.body
   // controller
-  ctx.body = await searchHolder({ id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber })
+  ctx.body = await searchHolder({ limitF, limitS, id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber })
 })
 
 module.exports = router

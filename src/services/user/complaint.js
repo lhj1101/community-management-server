@@ -108,7 +108,7 @@ const userUpdateUserComplaint = ({ id, direction, desc, done, date, userId }) =>
  * @param {*} date 活动日期
  * @param {*} userId 活动发起人id
  */
-const userSearchUserComplaint = ({ id, direction, desc, done, date, userId }) => {
+const userSearchUserComplaint = ({ limitF, limitS, id, direction, desc, done, date, userId }) => {
   let sql = `select
   user_complaint.id,
   complaint_direction,
@@ -139,6 +139,9 @@ const userSearchUserComplaint = ({ id, direction, desc, done, date, userId }) =>
   }
   if(userId){
     sql += ` and complaint_userId like '%${userId}%'`
+  }
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
   }
   sql += `;`;
   // 返回promise  

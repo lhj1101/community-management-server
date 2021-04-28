@@ -35,9 +35,9 @@ router.post('/updateUserComplaint', async (ctx, next) => {
 
 // 用户投诉建议 模糊查询, 不传数据即 all查询
 router.post('/searchUserComplaint', async (ctx, next) => {
-  const { id, direction, desc, done, date, userId } = ctx.request.body
+  const { limitF, limitS, id, direction, desc, done, date, userId } = ctx.request.body
   // controller
-  ctx.body = await searchUserComplaint({ id, direction, desc, done, date, userId })
+  ctx.body = await searchUserComplaint({ limitF, limitS, id, direction, desc, done, date, userId })
 })
 
 module.exports = router

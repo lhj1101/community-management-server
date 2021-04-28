@@ -115,7 +115,7 @@ const adminUpdateAdminAccount = ({ id, account, password, adminName }) => {
  * @param {*} account 管理员账号
  * @param {*} adminName 管理员名
  */
-const adminSearchAdminAccount = ({ id, account, adminName }) => {
+const adminSearchAdminAccount = ({ limitF, limitS, id, account, adminName }) => {
   let sql = `select
   admin_account.id,
   admin_user,
@@ -131,6 +131,9 @@ const adminSearchAdminAccount = ({ id, account, adminName }) => {
   }
   if(adminName){
     sql += ` and admin_name like '%${adminName}%'`
+  }
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
   }
   sql += `;`;
   // 返回promise  

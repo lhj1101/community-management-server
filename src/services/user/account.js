@@ -33,7 +33,7 @@ const userLogin = (account, password) => {
  */
 const userAddUserAccount = ({ account, password, realName, nickName, phone, pic, done }) => {
   // console.log(!account || !password || !realName || !nickName || !phone || !pic || !done)
-  if(!account || !password || !realName || !nickName || !phone || !pic || !done){
+  if(!account || !password || !realName || !nickName || !phone || !done){
     return false
   }
   let sql = `insert into user_account (
@@ -101,9 +101,9 @@ const userDelUserAccount = (id) => {
  * @param {*} pic 用户头像
  */
 const userUpdateUserAccount = ({ id, account, password, realName, nickName, phone, pic, done }) => {
-  if(!id || !account || !password || !realName || !nickName || !phone || !pic || !done){
-    return false
-  }
+  // if(!id || !account || !password || !realName || !nickName || !phone || !pic || !done){
+  //   return false
+  // }
   let sql = `update user_account set
   acc_user = '${account}',
   acc_password = '${password}',
@@ -139,7 +139,7 @@ const userUpdateUserAccount = ({ id, account, password, realName, nickName, phon
  * @param {*} phone 用户联系电话
  * @param {*} pic 用户头像
  */
-const userSearchUserAccount = ({ id, account, password, realName, nickName, phone, pic, done }) => {
+const userSearchUserAccount = ({ limitF, limitS, id, account, password, realName, nickName, phone, pic, done }) => {
   let sql = `select
   user_account.id,
   acc_user,
@@ -174,6 +174,9 @@ const userSearchUserAccount = ({ id, account, password, realName, nickName, phon
   }
   if(done){
     sql += ` and acc_done like '%${done}%'`
+  }
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
   }
   sql += `;`;
   // 返回promise  

@@ -28,11 +28,11 @@ const {
  * @param {*} done 分享是否已删除
  * @param {*} userId 分享人id
  */
-async function addUserShare({ title, desc, content, picture, date, done, userId }) {
+async function addUserShare({ title, desc, content, picture, date, done, userId, userPic }) {
   // service
-  const result = await userAddUserShare({ title, desc, content, picture, date, done, userId })
+  const result = await userAddUserShare({ title, desc, content, picture, date, done, userId, userPic })
   if (result) {
-    return new SuccessModel({ title, desc, content, picture, date, done, userId }, userAddShareSuccess)
+    return new SuccessModel({ title, desc, content, picture, date, done, userId, userPic }, userAddShareSuccess)
   }
   return new ErrorModel(userAddShareFail)
 }
@@ -79,9 +79,9 @@ async function updateUserShare({ id, title, desc, content, picture, date, done, 
  * @param {*} done 分享是否已删除
  * @param {*} userId 分享人id
  */
-async function searchUserShare({ id, title, desc, content, picture, date, done, userId }) {
+async function searchUserShare({ limitF, limitS, id, title, desc, content, picture, date, done, userId, userPic }) {
   // service
-  const result = await userSearchUserShare({ id, title, desc, content, picture, date, done, userId })
+  const result = await userSearchUserShare({ limitF, limitS, id, title, desc, content, picture, date, done, userId, userPic })
   if (result) {
     return new SuccessModel(result, userSearchShareSuccess)
   }

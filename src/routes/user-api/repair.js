@@ -35,9 +35,9 @@ router.post('/updateUserRepair', async (ctx, next) => {
 
 // 用户报修 模糊查询, 不传数据即 all查询
 router.post('/searchUserRepair', async (ctx, next) => {
-  const { id, name, extent, place, done, userId } = ctx.request.body
+  const { limitF, limitS, id, name, extent, place, done, userId } = ctx.request.body
   // controller
-  ctx.body = await searchUserRepair({ id, name, extent, place, done, userId })
+  ctx.body = await searchUserRepair({ limitF, limitS, id, name, extent, place, done, userId })
 })
 
 module.exports = router

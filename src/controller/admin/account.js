@@ -83,9 +83,9 @@ async function updateAdminAccount({ id, account, password, adminName }){
  * @param {*} account 管理员账号
  * @param {*} adminName 管理员名
  */
-async function searchAdminAccount({ id, account, adminName }) {
+async function searchAdminAccount({ limitF, limitS, id, account, adminName }) {
   // service
-  const result = await adminSearchAdminAccount({ id, account, adminName })
+  const result = await adminSearchAdminAccount({ limitF, limitS, id, account, adminName })
   if (result) {
     return new SuccessModel(result, adminSearchAccountSuccess)
   }

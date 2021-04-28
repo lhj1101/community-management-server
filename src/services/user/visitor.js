@@ -120,7 +120,7 @@ const userUpdateUserVisitor = ({ id, name, sex, phone, stayTime, date, done, use
  * @param {*} done 访客是否已经离开
  * @param {*} userId 被访人id
  */
-const userSearchUserVisitor = ({ id, name, sex, phone, stayTime, date, done, userId }) => {
+const userSearchUserVisitor = ({ limitF, limitS, id, name, sex, phone, stayTime, date, done, userId }) => {
   let sql = `select
   user_visitor.id,
   visitor_name,
@@ -159,6 +159,12 @@ const userSearchUserVisitor = ({ id, name, sex, phone, stayTime, date, done, use
   }
   if(userId){
     sql += ` and visitor_userId like '%${userId}%'`
+  }
+  if(userId){
+    sql += ` and activity_userId like '%${userId}%'`
+  }
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
   }
   sql += `;`;
   // 返回promise  

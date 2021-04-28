@@ -120,7 +120,7 @@ const houseUpdateHolder = ({ id, user, sex, phone, communityName, buildingNumber
  * @param {*} floorNumber 住户楼层
  * @param {*} doorNumber 住户门牌号
  */
-const houseSearchHolder = ({ id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber }) => {
+const houseSearchHolder = ({ limitF, limitS, id, user, sex, phone, communityName, buildingNumber, floorNumber, doorNumber }) => {
   let sql = `select
   house_holder.id,
   holder_user,
@@ -155,6 +155,9 @@ const houseSearchHolder = ({ id, user, sex, phone, communityName, buildingNumber
   }
   if(doorNumber){
     sql += ` and holder_door_number like '%${doorNumber}%'`
+  }
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
   }
   sql += `;`;
   // 返回promise  

@@ -79,9 +79,9 @@ async function updateUserVisitor({ id, name, sex, phone, stayTime, date, done, u
  * @param {*} done 访客是否已经离开
  * @param {*} userId 被访人id
  */
-async function searchUserVisitor({ id, name, sex, phone, stayTime, date, done, userId }) {
+async function searchUserVisitor({ limitF, limitS, id, name, sex, phone, stayTime, date, done, userId }) {
   // service
-  const result = await userSearchUserVisitor({ id, name, sex, phone, stayTime, date, done, userId })
+  const result = await userSearchUserVisitor({ limitF, limitS, id, name, sex, phone, stayTime, date, done, userId })
   if (result) {
     return new SuccessModel(result, userSearchVisitorSuccess)
   }

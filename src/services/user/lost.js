@@ -114,7 +114,7 @@ const userUpdateUserLost = ({ id, name, desc, place, date, done, userId }) => {
  * @param {*} done 失物是否已找回
  * @param {*} userId 失物人id
  */
-const userSearchUserLost = ({ id, name, desc, place, date, done, userId }) => {
+const userSearchUserLost = ({ limitF, limitS, id, name, desc, place, date, done, userId }) => {
   let sql = `select
   user_lost.id,
   lost_name,
@@ -149,6 +149,9 @@ const userSearchUserLost = ({ id, name, desc, place, date, done, userId }) => {
   }
   if(userId){
     sql += ` and lost_userId like '%${userId}%'`
+  }
+  if(limitS){
+    sql += ` order by id desc limit ${limitF}, ${limitS}`
   }
   sql += `;`;
   // 返回promise  

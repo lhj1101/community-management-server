@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 
-var app = require('../src/app');
+var app = require('../app');
 var debug = require('debug')('demo:server');
 var http = require('http');
+const socketio = require('socket.io')
 
 /**
  * Get port from environment and store in Express.
@@ -21,6 +22,9 @@ var port = normalizePort(process.env.PORT || '3000');
 
 var server = http.createServer(app.callback());
 
+// io
+// const io = socketio(server)
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -28,6 +32,58 @@ var server = http.createServer(app.callback());
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+// const io = require('socket.io')(server);
+
+const io = socketio(server, {
+  transports: ['websocket']
+})
+let num = 0
+// 监听客户端是否触发连接
+io.on('connection', socket => {
+  num = num + 1
+  console.log('socket.io连接成功...')
+  // 一对一发送
+  socket.emit('message', '欢迎qweqwe进来了')
+  socket.emit('num', num)
+
+  socket.on('come', data => {
+    console.log(data)
+  })
+  socket.emit('come', '我来了')
+
+  // 聊天信息
+  socket.on('chat', data => {
+    console.log(data)
+    socket.broadcast.emit('chatMessage', data)
+    socket.emit('chatMessage', data)
+  })
+
+  // 个人信息
+  socket.on('info', data => {
+    console.log(data)
+    socket.broadcast.emit('infoMessage', data)
+    socket.emit('infoMessage', data)
+  })
+
+  // 进入
+  socket.on('username', data =>  {
+    console.log(data)
+    // socket.broadcast.emit('coming', data)
+    socket.broadcast.emit('message', data + '进来了')
+  })
+
+  // 消息广播
+  socket.broadcast.emit('message', '欢迎xxx进来了')
+
+  io.on('disconnect', socket => {
+    console.log('socket.io有人退出了...')
+    num = num - 1
+  })
+  
+
+})
+
 
 /**
  * Normalize a port into a number, string, or false.
